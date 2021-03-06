@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 25px;
+    font-family: 'Signika', sans-serif;
+    overflow: hidden;
+    overscroll-behavior: none;
+    user-select: none;
+}
+
+h1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding-top: 5%;
+    bottom: 5%;
+    color: rgb(141, 137, 137);
+}
+
+.main-container {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(3, 4, 77), rgb(43, 1, 24));
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+}
+
+.btn-container .btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid aqua;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+}
+
+.btn-container .btn span {
+    height: 80%;
+    width: 80%;
+    position: absolute;
+}
+
+.win {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    justify-content: center;
+    display: grid;
+    visibility: hidden;
+}
+
+.win p {
+    text-align: center;
+    padding: 5px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 4px 5px 5px rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+
+.res {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-content: center;
+}
+
+.res button:hover,
+.btn-container .btn span:hover {
+    cursor: pointer;
+}
+
+.res button {
+    font-size: 100%;
+    background: linear-gradient(rgb(247, 0, 255), rgb(4, 0, 255));
+    padding: 5px 20px;
+    border: none;
+    box-shadow: 3px 2px 5px rgba(255, 255, 255, 0.7);
+    font-size: 200%;
+    margin-top: 10%;
+}
