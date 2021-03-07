@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://t-t-t-r.netlify.app/title.jpg">
+    <meta name="description" content="Multiplayer Tic-Tac-Toe game.">
+    <meta property="og:url" content="https://t-t-t-r.netlify.app">
+    <meta name="author" content="Rifat Mahmud">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./tic-tac-toe.css">
+    <link rel="stylesheet" href="./animate.min.css">
+    <link rel="icon" href='./title.jpg' />
+</head>
+
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <section class="main-container">
+        <div class="btn-container">
+            <div class="btn"><span class="0"></span></div>
+            <div class="btn"><span class="1"></span></div>
+            <div class="btn"><span class="2"></span></div>
+            <div class="btn"><span class="3"></span></div>
+            <div class="btn"><span class="4"></span></div>
+            <div class="btn"><span class="5"></span></div>
+            <div class="btn"><span class="6"></span></div>
+            <div class="btn"><span class="7"></span></div>
+            <div class="btn"><span class="8"></span></div>
+        </div>
+    </section>
+    <section class="win">
+        <div class="main">
+            <div class="sty"></div>
+            <p>PLAYER wins</p>
+        </div>
+    </section>
+    <section class="point">
+        <span class="p1">Player1: <span>0</span>points</span>
+        <span class="p2">Player2: <span>0</span>points</span>
+    </section>
+    <section class="res"><button>Play Again</button></section>
+</body>
+<script src="./tic-tac-toe.js"></script>
+<script src="./vanilla-tilt.min.js"></script>
+<script>
+    VanillaTilt.init(document.querySelectorAll('.btn'), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.8,
+    });
+</script>
+
+</html>
