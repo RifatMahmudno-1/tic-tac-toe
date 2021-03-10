@@ -96,19 +96,3 @@ h1 {
     font-size: 200%;
     margin-top: 10%;
 }
-
-.point {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    color: #fff;
-    padding: 5%;
-}
-
-.point .p1 {
-    float: left;
-}
-
-.point .p2 {
-    float: right;
-}

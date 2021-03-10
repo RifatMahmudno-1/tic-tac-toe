@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');*/
 
 * {
     margin: 0;
@@ -55,6 +55,16 @@ h1 {
     position: absolute;
 }
 
+.sp1 {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background: aqua;
+}
+
+.sp2 {
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    background: chartreuse;
+}
+
 .win {
     position: absolute;
     top: 5%;
@@ -95,4 +105,20 @@ h1 {
     box-shadow: 3px 2px 5px rgba(255, 255, 255, 0.7);
     font-size: 200%;
     margin-top: 10%;
+}
+
+.point {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    color: #fff;
+    padding: 5%;
+}
+
+.point .p1 {
+    float: left;
+}
+
+.point .p2 {
+    float: right;
 }

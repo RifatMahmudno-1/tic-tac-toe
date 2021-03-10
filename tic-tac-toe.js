@@ -1,6 +1,7 @@
 (function () {
     var wndw
     var gtc = document.querySelector('.win').offsetHeight
+    var gtcb = document.querySelector('.win').offsetHeight
     //window size
     function Wndw() {
         wndw = {
@@ -29,58 +30,65 @@
     })
     //-----------------------------------------------------------------
     let color = ['chartreuse', 'aqua']
-    var btns = document.querySelectorAll('.btn-container .btn span')
+    let btns = document.querySelectorAll('.btn-container .btn')
     var player;
     var player1 = [];
     var player2 = [];
-    var st1 = `clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); background: ${color[0]};`;
-    var st2 = `clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%); background: ${color[1]};`;
+    var all = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    let ani = 'animate__animated'
+
     btns.forEach(function (el) {
-        var runned = false;
         el.addEventListener('click', function () {
-            if (runned == false) {
+            if (el.childNodes[0].classList.value !== 'sp1' && el.childNodes[0].classList.value !== 'sp2') {
                 player = !player;
                 if (player) {
-                    el.style = st1;
-                    player1.push(parseInt(el.classList.value))
-                    winner(player1, 'Player1', st1)
-                    el.classList.add('animate__animated', randsty())
-                } else if (!player) {
-                    el.style = st2
-                    player2.push(parseInt(el.classList.value))
-                    winner(player2, 'Player2', st2)
-                    el.classList.add('animate__animated', randsty())
+                    el.childNodes[0].classList.add('sp1', ani, randsty())
+                    player1.push(parseInt(el.classList[1]))
+                    winner(player1, '.p1')
+                } else {
+                    el.childNodes[0].classList.add('sp2', ani, randsty())
+                    player2.push(parseInt(el.classList[1]))
+                    winner(player2, '.p2')
                 }
             }
-            runned = true;
         })
     })
 
-    function winner(a, b, c) {
-        if (a.includes(8) && a.includes(1) && a.includes(6) ||
-            a.includes(3) && a.includes(5) && a.includes(7) ||
-            a.includes(4) && a.includes(9) && a.includes(2) ||
-            a.includes(8) && a.includes(5) && a.includes(2) ||
-            a.includes(4) && a.includes(5) && a.includes(6) ||
-            a.includes(8) && a.includes(3) && a.includes(4) ||
-            a.includes(1) && a.includes(5) && a.includes(9) ||
-            a.includes(6) && a.includes(7) && a.includes(2)) {
-            document.querySelector('.res').style.display = 'grid'
-            document.querySelector('.res').classList.add('animate__animated', "animate__bounceInLeft")
+    function winner(a, b) {
+        if (a.includes(0) && a.includes(1) && a.includes(2) ||
+            a.includes(3) && a.includes(4) && a.includes(5) ||
+            a.includes(6) && a.includes(7) && a.includes(8) ||
+            a.includes(0) && a.includes(4) && a.includes(8) ||
+            a.includes(6) && a.includes(4) && a.includes(2) ||
+            a.includes(0) && a.includes(3) && a.includes(6) ||
+            a.includes(1) && a.includes(4) && a.includes(7) ||
+            a.includes(2) && a.includes(5) && a.includes(8)) {
+            document.querySelector(`${b} span`).textContent = parseInt(document.querySelector(`${b} span`).textContent) + 1
+            player = !player
             document.querySelector('.win').style = 'visibility: visible'
-            document.querySelector('.win p').textContent = `${b} wins`
-            document.querySelector('.win .sty').style = c;
-            document.querySelector('.win').classList.add('animate__animated', "animate__backInUp");
-            document.querySelector('.btn-container').classList.add('animate__animated', 'animate__tada')
+            if (b === '.p1') {
+                document.querySelector('.win p').textContent = `Player1 wins`
+                document.querySelector('.win .sty').classList.add('sp1')
+            } else {
+                document.querySelector('.win p').textContent = `Player2 wins`
+                document.querySelector('.win .sty').classList.add('sp2')
+            }
+            document.querySelector('.res').style.display = 'grid'
+            //add a buch of animetion
+            document.querySelector('.win').classList.add(ani, "animate__backInUp");
+            document.querySelector('.btn-container').classList.add(ani, 'animate__tada')
+            document.querySelector('.res').classList.add(ani, "animate__bounceInLeft")
         } else if (player1.length + player2.length == 9) {
+            player = player
             gtc = '0'
             BtnCon();
-            document.querySelector('.res').style.display = 'grid'
-            document.querySelector('.res').classList.add('animate__animated', "animate__bounceInLeft")
             document.querySelector('.win').style = 'visibility: visible'
+            document.querySelector('.res').style.display = 'grid'
             document.querySelector('.win p').textContent = `Draw`
-            document.querySelector('.win').classList.add('animate__animated', "animate__backInUp");
-            document.querySelector('.btn-container').classList.add('animate__animated', 'animate__tada')
+            //add a buch of animetion
+            document.querySelector('.win').classList.add(ani, "animate__backInUp");
+            document.querySelector('.btn-container').classList.add(ani, 'animate__tada')
+            document.querySelector('.res').classList.add(ani, "animate__bounceInLeft")
         }
     }
 
@@ -90,6 +98,21 @@
         return cla[rand]
     }
     document.querySelector('.res button').addEventListener('click', function () {
-        window.location.reload()
+        btns.forEach(function (el) {
+            if (el.childNodes[0].classList[0] === 'sp1' || el.childNodes[0].classList[0] === 'sp2') {
+                el.childNodes[0].removeAttribute('class')
+            }
+        })
+        document.querySelector('.win').style = 'visibility: hidden'
+        document.querySelector('.win .sty').classList[1] === 'sp1' ? document.querySelector('.win .sty').classList.remove('sp1') : document.querySelector('.win .sty').classList[1] === 'sp2' ? document.querySelector('.win .sty').classList.remove('sp2') : stop
+        document.querySelector('.res').style.display = 'none'
+        //remove animations
+        document.querySelector('.win').classList.remove(ani, "animate__backInUp");
+        document.querySelector('.btn-container').classList.remove(ani, 'animate__tada')
+        document.querySelector('.res').classList.remove(ani, "animate__bounceInLeft")
+        player1 = []
+        player2 = []
+        gtc = gtcb
+        BtnCon();
     })
 })()
