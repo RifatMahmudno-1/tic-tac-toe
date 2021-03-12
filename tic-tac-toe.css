@@ -7,7 +7,6 @@
 }
 
 body {
-    font-size: 25px;
     font-family: 'Signika', sans-serif;
     overflow: hidden;
     overscroll-behavior: none;
@@ -67,7 +66,7 @@ h1 {
 
 .win {
     position: absolute;
-    top: 5%;
+    top: 8%;
     width: 100%;
     justify-content: center;
     display: grid;

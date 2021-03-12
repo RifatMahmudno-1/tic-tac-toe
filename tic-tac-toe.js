@@ -14,8 +14,10 @@
     function BtnCon() {
         if (wndw.w >= wndw.h) {
             document.querySelector('.btn-container').style = `width: ${wndw.h*0.7}px; height: ${wndw.h*0.7}px`
+            document.querySelector(':root').style = `font-size: ${wndw.w/40}px;`
         } else {
             document.querySelector('.btn-container').style = `width: ${wndw.w*0.7}px; height: ${wndw.w*0.7}px`
+            document.querySelector(':root').style = `font-size: ${wndw.h/40}px;`
         }
         document.querySelector('.win .main').style = `display: grid; grid-template-columns:${gtc}px ${document.querySelector('.win .main p').offsetWidth}px; grid-gap: 5px`
     };
@@ -29,17 +31,15 @@
         BtnCon();
     })
     //-----------------------------------------------------------------
-    let color = ['chartreuse', 'aqua']
     let btns = document.querySelectorAll('.btn-container .btn')
     var player;
     var player1 = [];
     var player2 = [];
-    var all = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     let ani = 'animate__animated'
 
     btns.forEach(function (el) {
         el.addEventListener('click', function () {
-            if (el.childNodes[0].classList.value !== 'sp1' && el.childNodes[0].classList.value !== 'sp2') {
+            if (el.childNodes[0].classList.length == 0) {
                 player = !player;
                 if (player) {
                     el.childNodes[0].classList.add('sp1', ani, randsty())
@@ -97,7 +97,7 @@
         var rand = Math.floor(Math.random() * cla.length)
         return cla[rand]
     }
-    document.querySelector('.res button').addEventListener('click', function () {
+    document.querySelector('.res .btn1').addEventListener('click', function () {
         btns.forEach(function (el) {
             if (el.childNodes[0].classList[0] === 'sp1' || el.childNodes[0].classList[0] === 'sp2') {
                 el.childNodes[0].removeAttribute('class')
@@ -114,5 +114,8 @@
         player2 = []
         gtc = gtcb
         BtnCon();
+    })
+    document.querySelector('.res .btn2').addEventListener('click', function () {
+        window.location.reload();
     })
 })()
