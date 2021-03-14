@@ -1,7 +1,7 @@
 (function () {
     var wndw
     var gtc = document.querySelector('.win').offsetHeight
-    var gtcb = document.querySelector('.win').offsetHeight
+    var gtcb = document.querySelector('.win').offsetHeight //backup of gtc
     //window size
     function Wndw() {
         wndw = {
@@ -14,10 +14,12 @@
     function BtnCon() {
         if (wndw.w >= wndw.h) {
             document.querySelector('.btn-container').style = `width: ${wndw.h*0.7}px; height: ${wndw.h*0.7}px`
-            document.querySelector(':root').style = `font-size: ${wndw.w/40}px;`
+            wndw.w / 40 > 3 ? aa = 30 : aa = wndw.w / 40
+            document.querySelector('body').style = `font-size: ${aa}px;`
         } else {
             document.querySelector('.btn-container').style = `width: ${wndw.w*0.7}px; height: ${wndw.w*0.7}px`
-            document.querySelector(':root').style = `font-size: ${wndw.h/40}px;`
+            wndw.h / 40 > 3 ? aa = 30 : aa = wndw.h / 40
+            document.querySelector('body').style = `font-size: ${aa}px;`
         }
         document.querySelector('.win .main').style = `display: grid; grid-template-columns:${gtc}px ${document.querySelector('.win .main p').offsetWidth}px; grid-gap: 5px`
     };
@@ -65,7 +67,7 @@
             a.includes(2) && a.includes(5) && a.includes(8)) {
             document.querySelector(`${b} span`).textContent = parseInt(document.querySelector(`${b} span`).textContent) + 1
             player = !player
-            document.querySelector('.win').style = 'visibility: visible'
+            //end text
             if (b === '.p1') {
                 document.querySelector('.win p').textContent = `Player1 wins`
                 document.querySelector('.win .sty').classList.add('sp1')
@@ -73,23 +75,25 @@
                 document.querySelector('.win p').textContent = `Player2 wins`
                 document.querySelector('.win .sty').classList.add('sp2')
             }
-            document.querySelector('.res').style.display = 'grid'
-            //add a buch of animetion
-            document.querySelector('.win').classList.add(ani, "animate__backInUp");
-            document.querySelector('.btn-container').classList.add(ani, 'animate__tada')
-            document.querySelector('.res').classList.add(ani, "animate__bounceInLeft")
+            aniVis()
         } else if (player1.length + player2.length == 9) {
-            player = player
-            gtc = '0'
-            BtnCon();
-            document.querySelector('.win').style = 'visibility: visible'
-            document.querySelector('.res').style.display = 'grid'
+            //end text
             document.querySelector('.win p').textContent = `Draw`
-            //add a buch of animetion
-            document.querySelector('.win').classList.add(ani, "animate__backInUp");
-            document.querySelector('.btn-container').classList.add(ani, 'animate__tada')
-            document.querySelector('.res').classList.add(ani, "animate__bounceInLeft")
+            player = player
+            gtc = 0;
+            BtnCon();
+            aniVis()
         }
+    }
+
+    function aniVis() {
+        //add a buch of animation
+        document.querySelector('.win').classList.add(ani, "animate__backInUp");
+        document.querySelector('.btn-container').classList.add(ani, 'animate__tada')
+        document.querySelector('.res').classList.add(ani, "animate__bounceInLeft")
+        //visible
+        document.querySelector('.win').style = 'visibility: visible'
+        document.querySelector('.res').style.display = 'grid'
     }
 
     function randsty() {
