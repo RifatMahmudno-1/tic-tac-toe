@@ -37,24 +37,35 @@
     var player;
     var player1 = [];
     var player2 = [];
-    let ani = 'animate__animated'
-
+    let ani = 'animate__animated';
+    //let empty = [];
     btns.forEach(function (el) {
         el.addEventListener('click', function () {
             if (el.childNodes[0].classList.length == 0) {
                 player = !player;
                 if (player) {
                     el.childNodes[0].classList.add('sp1', ani, randsty())
-                    player1.push(parseInt(el.classList[1]))
+                    //empSpots()
+                    player1.push(parseInt(el.classList[1].slice(-1)))
                     winner(player1, '.p1')
                 } else {
                     el.childNodes[0].classList.add('sp2', ani, randsty())
-                    player2.push(parseInt(el.classList[1]))
+                    //empSpots()
+                    player2.push(parseInt(el.classList[1].slice(-1)))
                     winner(player2, '.p2')
                 }
             }
         })
     })
+
+    /*function empSpots() {
+        empty = [];
+        for (var i = 0; i <= 8; i++) {
+            if (btns[i].childNodes[0].classList[0] !== 'sp1' && btns[i].childNodes[0].classList[0] !== 'sp2') {
+                empty.push(parseInt(btns[i].classList[1].slice(-1)))
+            }
+        }
+    }*/
 
     function winner(a, b) {
         if (a.includes(0) && a.includes(1) && a.includes(2) ||
