@@ -142,10 +142,20 @@
                     } else if (empty.includes(0)) {
                         btns[0].click();
                     }
-                } else if (a2.length === 1 && (a1.includes(0 && 8) || a1.includes(2 && 6))) {
-                    btns[1].click()
-                } else if (a2.length === 1 && !empty.includes(0)) {
-                    btns[2].click()
+                } else if (a2.length === 1) {
+                    if (a1.includes(0) && a1.includes(8) || a1.includes(0) && a1.includes(7) || a1.includes(1) && a1.includes(6)) {
+                        btns[3].click();
+                    } else if (a1.includes(2) && a1.includes(6) || a1.includes(1) && a1.includes(8) || a1.includes(2) && a1.includes(7)) {
+                        btns[5].click();
+                    } else if (a1.includes(0) && a1.includes(5) || a1.includes(3) && a1.includes(2)) {
+                        btns[1].click();
+                    } else if (a1.includes(3) && a1.includes(8) || a1.includes(5) && a1.includes(6)) {
+                        btns[7].click();
+                    } else if (!a1.includes(0)) {
+                        btns[2].click();
+                    } else {
+                        btns[empty[Math.floor(Math.random() * empty.length)]].click();
+                    }
                 } else if (aaa == false && empty !== undefined) {
                     btns[empty[Math.floor(Math.random() * empty.length)]].click();
                 }
