@@ -1,4 +1,4 @@
-var origBoard;
+var origBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 const huPlayer = 'O';
 const aiPlayer = 'X';
 const winCombos = [
@@ -13,24 +13,17 @@ const winCombos = [
 ]
 
 const cells = document.querySelectorAll('.cell');
-startGame();
 
 function startGame() {
     document.querySelector(".endgame").style.display = "none";
-    origBoard = Array.from(Array(9).keys());
+    //    origBoard = Array.from(Array(9).keys());   //same as origBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     for (var i = 0; i < cells.length; i++) {
         cells[i].innerText = '';
         cells[i].style.removeProperty('background-color');
         cells[i].addEventListener('click', turnClick, false);
     }
 }
-
-function turnClick(square) {
-    if (typeof origBoard[square.target.id] == 'number') {
-        turn(square.target.id, huPlayer)
-        if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
-    }
-}
+startGame();
 
 function turn(squareId, player) {
     origBoard[squareId] = player;
@@ -39,6 +32,13 @@ function turn(squareId, player) {
     if (gameWon) gameOver(gameWon)
 }
 
+function turnClick(square) {
+    if (typeof origBoard[square.target.id] == 'number') {
+        turn(square.target.id, huPlayer)
+        if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
+    }
+}
+//has won??
 function checkWin(board, player) {
     let plays = board.reduce((a, e, i) =>
         (e === player) ? a.concat(i) : a, []);
@@ -54,7 +54,7 @@ function checkWin(board, player) {
     }
     return gameWon;
 }
-
+//action on win
 function gameOver(gameWon) {
     for (let index of winCombos[gameWon.index]) {
         document.getElementById(index).style.backgroundColor =
@@ -65,20 +65,17 @@ function gameOver(gameWon) {
     }
     declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");
 }
-
+//winner??
 function declareWinner(who) {
     document.querySelector(".endgame").style.display = "block";
     document.querySelector(".endgame .text").innerText = who;
 }
-
+//empty boxes
 function emptySquares() {
     return origBoard.filter(s => typeof s == 'number');
 }
 
-function bestSpot() {
-    return main(origBoard, aiPlayer).index;
-}
-
+//is draw??
 function checkTie() {
     if (emptySquares().length == 0) {
         for (var i = 0; i < cells.length; i++) {
@@ -91,7 +88,11 @@ function checkTie() {
     return false;
 }
 
-function main(newBoard, player) {
+function bestSpot() {
+    return minimax(origBoard, aiPlayer).index;
+}
+//the hell
+function minimax(newBoard, player) {
     var availSpots = emptySquares();
 
     if (checkWin(newBoard, huPlayer)) {
@@ -114,10 +115,10 @@ function main(newBoard, player) {
         newBoard[availSpots[i]] = player;
 
         if (player == aiPlayer) {
-            var result = main(newBoard, huPlayer);
+            var result = minimax(newBoard, huPlayer);
             move.score = result.score;
         } else {
-            var result = main(newBoard, aiPlayer);
+            var result = minimax(newBoard, aiPlayer);
             move.score = result.score;
         }
 
