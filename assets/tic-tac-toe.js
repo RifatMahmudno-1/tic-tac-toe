@@ -142,6 +142,8 @@
                     } else if (empty.includes(0)) {
                         btns[0].click();
                     }
+                } else if (a2.length === 1 && (a1.includes(0 && 8) || a1.includes(2 && 6))) {
+                    btns[1].click()
                 } else if (a2.length === 1 && !empty.includes(0)) {
                     btns[2].click()
                 } else if (aaa == false && empty !== undefined) {
