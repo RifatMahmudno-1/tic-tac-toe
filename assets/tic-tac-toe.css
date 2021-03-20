@@ -118,6 +118,7 @@ h1 {
     top: 0;
     color: #fff;
     padding: 5%;
+    display: none;
 }
 
 .point .p1 {
