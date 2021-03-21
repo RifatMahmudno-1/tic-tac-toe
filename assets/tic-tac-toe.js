@@ -151,7 +151,7 @@
                         btns[1].click();
                     } else if (a1.includes(3) && a1.includes(8) || a1.includes(5) && a1.includes(6)) {
                         btns[7].click();
-                    } else if (!a1.includes(0)) {
+                    } else if (empty.includes(0) == false) {
                         btns[2].click();
                     } else {
                         btns[empty[Math.floor(Math.random() * empty.length)]].click();
