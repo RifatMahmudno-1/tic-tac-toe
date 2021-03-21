@@ -65,6 +65,11 @@ h1 {
     background: chartreuse;
 }
 
+.sp3 {
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    background: rgb(255, 0, 0);
+}
+
 .win {
     position: absolute;
     top: 8%;

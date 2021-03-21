@@ -1,15 +1,11 @@
 (function () {
     //---------------------------------------Skeleton----------------------------------------
-    var wndw
-    var gtc = document.querySelector('.win').offsetHeight
-    var gtcb = document.querySelector('.win').offsetHeight //backup of gtc
     //window size
     function Wndw() {
-        wndw = {
+        return wndw = {
             h: window.innerHeight,
             w: window.innerWidth
         }
-        return wndw
     }
     //btn-container resize;
     function BtnCon() {
@@ -22,20 +18,19 @@
             wndw.h / 40 > 30 ? aa = 30 : aa = wndw.h / 40
             document.querySelector('body').style = `font-size: ${aa}px;`
         }
-        document.querySelector('.win .main').style = `display: grid; grid-template-columns:${gtc}px ${document.querySelector('.win .main p').offsetWidth}px; grid-gap: 5px`
+        let aaa = parseInt(document.querySelector('body').style.fontSize.slice(0, 2))
+        document.querySelector('.win .main').style = `display: grid; grid-template-columns:${aaa+10}px ${document.querySelector('.win .main p').offsetWidth}px; grid-gap: 5px`
     };
-
     //call immediately
-    Wndw();
+    var wndw = Wndw();
     BtnCon();
     //call on window resize
     window.addEventListener('resize', function () {
-        Wndw();
+        wndw = Wndw();
         BtnCon();
     })
     //add style immediately
     document.querySelector('.mode').style.display = 'grid';
-
     //-----------------------------------Brain---------------------------------------------
     let btns = document.querySelectorAll('.btn-container .btn')
     let mode;
@@ -102,7 +97,7 @@
             let bbb;
             let p1 = [];
             let aaa;
-
+            //be winner
             function beW() {
                 for (var i = 0; i < a2.length; i++) {
                     p2.push(a2[i])
@@ -119,9 +114,8 @@
                 }
                 if (!bbb) beS()
             }
-
             beW()
-
+            //prevent from winning
             function beS() {
                 for (var i = 0; i < a1.length; i++) {
                     p1.push(a1[i])
@@ -203,9 +197,8 @@
     //action on draw
     function drawact() {
         document.querySelector('.win p').textContent = `Draw`
+        document.querySelector('.win .sty').classList.add('sp3')
         player = player
-        gtc = 0;
-        BtnCon();
         aniVis()
     }
     //has any player won??
@@ -223,36 +216,42 @@
             return false
         }
     }
-    //restart
-    function TryAgain() {
-        document.querySelector('.res .btn1').addEventListener('click', function (e) {
-            btns.forEach(function (el) {
-                if (el.childNodes[0].classList[0] === 'sp1' || el.childNodes[0].classList[0] === 'sp2') {
-                    el.childNodes[0].removeAttribute('class')
-                }
-            })
-            document.querySelector('.win').style = 'visibility: hidden'
-            document.querySelector('.win .sty').classList[1] === 'sp1' ? document.querySelector('.win .sty').classList.remove('sp1') : document.querySelector('.win .sty').classList[1] === 'sp2' ? document.querySelector('.win .sty').classList.remove('sp2') : stop
-            document.querySelector('.res').style.display = 'none'
-            //remove animations
-            document.querySelector('.win').classList.remove(ani, "animate__backInUp");
-            document.querySelector('.btn-container').classList.remove(ani, 'animate__tada')
-            document.querySelector('.res').classList.remove(ani, "animate__bounceInLeft")
-            player1 = []
-            player2 = []
-            gtc = gtcb
-            BtnCon();
+    //restart and try-again commn
+    function ResTry() {
+        btns.forEach(function (el) {
+            if (el.childNodes[0].classList[0] === 'sp1' || el.childNodes[0].classList[0] === 'sp2') {
+                el.childNodes[0].removeAttribute('class')
+            }
+        })
+        document.querySelector('.win').style = 'visibility: hidden'
+        document.querySelector('.win .sty').classList[1] === 'sp1' ? document.querySelector('.win .sty').classList.remove('sp1') : document.querySelector('.win .sty').classList[1] === 'sp2' ? document.querySelector('.win .sty').classList.remove('sp2') : document.querySelector('.win .sty').classList[1] === 'sp3' ? document.querySelector('.win .sty').classList.remove('sp3') : stop
+        document.querySelector('.res').style.display = 'none'
+        document.querySelector('.win').classList.remove(ani, "animate__backInUp");
+        document.querySelector('.btn-container').classList.remove(ani, 'animate__tada')
+        document.querySelector('.res').classList.remove(ani, "animate__bounceInLeft")
+        player1 = []
+        player2 = []
+    }
+    //button event listeners
+    function btnEV() {
+        //try again
+        document.querySelector('.res .btn1').addEventListener('click', function () {
+            ResTry()
             if (player == true && mode === 'AI') {
                 empSpots();
                 nxt(player1, player2)
             }
         })
-    }
-
-    function btnEV() {
-        TryAgain();
+        //restart
         document.querySelector('.res .btn2').addEventListener('click', function () {
-            window.location.reload();
+            ResTry()
+            document.querySelector('.mode').style.display = 'grid';
+            document.querySelector('.point').style.display = 'none';
+            mode = undefined;
+            player = undefined;
+            empty = [];
+            pl1 = undefined;
+            pl2 = undefined;
         })
         document.querySelector('.twoP').addEventListener('click', function () {
             document.querySelector('.mode').style.display = 'none';
