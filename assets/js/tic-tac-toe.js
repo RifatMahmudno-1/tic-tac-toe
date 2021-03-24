@@ -275,3 +275,16 @@
     //call immediately
     btnEV()
 })()
+/*function possM() {
+    for (var i = 0; i < empty.length; i++) {
+        for (var j = 0; j < empty.length; j++) {
+            for (var k = 0; k < empty.length; k++) {
+                if (winrule([empty[i], empty[j], empty[k]])) {
+                    let possMoves = [empty[i], empty[j], empty[k]]
+                    console.log(possMoves)
+                }
+            }
+        }
+    }
+}
+possM()*/
