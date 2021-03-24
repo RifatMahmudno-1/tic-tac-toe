@@ -5,16 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="https://t-t-t-r.netlify.app/assets/title.jpg">
+    <meta property="og:image" content="https://t-t-t-r.netlify.app/assets/others/logo.jpg">
     <meta name="description" content="Multiplayer Tic-Tac-Toe game.">
     <meta property="og:url" content="https://t-t-t-r.netlify.app">
     <meta name="author" content="Rifat Mahmud">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="./assets/tic-tac-toe.css">
-    <link rel="stylesheet" href="./assets/animate.min.css">
-    <link rel="icon" href='./assets/title.jpg' />
+    <link rel="stylesheet" href="./assets/css/tic-tac-toe.css">
+    <link rel="stylesheet" href="./assets/css/animate.min.css">
+    <link rel="icon" href='./assets/others/logo.jpg' />
 </head>
+<!--
+*********************************************************
+*Written on pure Javascript, Css and Html. ©Rifat Mahmud*
+*********************************************************
+-->
 
 <body>
     <h1>Tic-Tac-Toe</h1>
@@ -51,10 +56,15 @@
         <button class="twoP">Multiplayer</button>
         <button class="AI">Against AI</button>
     </section>
-
+    <section class="audio">
+        <audio src="./assets/sound/chimes.wav" preload="auto"></audio>
+        <audio src="./assets/sound/chord.wav" preload="auto"></audio>
+        <audio src="./assets/sound/ding.wav" preload="auto"></audio>
+        <audio src="./assets/sound/notify.wav" preload="auto"></audio>
+    </section>
 </body>
-<script src="./assets/tic-tac-toe.js"></script>
-<script src="./assets/vanilla-tilt.min.js"></script>
+<script src="./assets/js/tic-tac-toe.js"></script>
+<script src="./assets/js/vanilla-tilt.min.js"></script>
 <script>
     VanillaTilt.init(document.querySelectorAll('.btn'), {
         max: 45,

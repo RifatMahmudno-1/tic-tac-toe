@@ -41,6 +41,7 @@
     let empty = [];
     let pl1;
     let pl2;
+    let audio = document.querySelectorAll('.audio audio')
     //mode
     function Mode() {
         if (mode === 'AI') {
@@ -64,6 +65,7 @@
         btns.forEach(function (el) {
             el.addEventListener('click', function () {
                 if (el.childNodes[0].classList.length == 0) {
+                    audio[2].play()
                     player = !player;
                     if (player) {
                         el.childNodes[0].classList.add('sp1', ani, randsty())
@@ -184,6 +186,7 @@
     function winact(b) {
         document.querySelector(`${b} span`).textContent = parseInt(document.querySelector(`${b} span`).textContent) + 1
         player = !player
+        audio[3].play()
         //end text
         if (b === '.p1') {
             document.querySelector('.win p').textContent = pl1
@@ -198,6 +201,7 @@
     function drawact() {
         document.querySelector('.win p').textContent = `Draw`
         document.querySelector('.win .sty').classList.add('sp3')
+        audio[1].play()
         player = player
         aniVis()
     }
@@ -236,6 +240,7 @@
     function btnEV() {
         //try again
         document.querySelector('.res .btn1').addEventListener('click', function () {
+            audio[0].play()
             ResTry()
             if (player == true && mode === 'AI') {
                 empSpots();
@@ -244,6 +249,7 @@
         })
         //restart
         document.querySelector('.res .btn2').addEventListener('click', function () {
+            audio[0].play()
             ResTry()
             document.querySelector('.mode').style.display = 'grid';
             document.querySelector('.point').style.display = 'none';
@@ -256,11 +262,13 @@
         document.querySelector('.twoP').addEventListener('click', function () {
             document.querySelector('.mode').style.display = 'none';
             mode = 'two'
+            audio[0].play()
             Mode()
         })
         document.querySelector('.AI').addEventListener('click', function () {
             document.querySelector('.mode').style.display = 'none';
             mode = 'AI'
+            audio[0].play()
             Mode()
         })
     }
