@@ -99,11 +99,15 @@
             let bbb;
             let p1 = [];
             let aaa;
+
+            function PP(a, b) {
+                for (var i = 0; i < a.length; i++) {
+                    b.push(a[i])
+                }
+            }
             //be winner
             function beW() {
-                for (var i = 0; i < a2.length; i++) {
-                    p2.push(a2[i])
-                }
+                PP(a2, p2)
                 for (var i = 0; i < empty.length; i++) {
                     p2.push(empty[i])
                     bbb = winrule(p2)
@@ -119,9 +123,7 @@
             beW()
             //prevent from winning
             function beS() {
-                for (var i = 0; i < a1.length; i++) {
-                    p1.push(a1[i])
-                }
+                PP(a1, p1)
                 for (var i = 0; i < empty.length; i++) {
                     p1.push(empty[i])
                     aaa = winrule(p1)
