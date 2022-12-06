@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta property="og:image" content="https://t-t-t-r.netlify.app/assets/others/logo.jpg" />
+		<meta name="description" content="Multiplayer Tic-Tac-Toe game." />
+		<meta property="og:url" content="https://t-t-t-r.netlify.app" />
+		<meta name="author" content="Rifat Mahmud" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Tic Tac Toe</title>
+		<link rel="stylesheet" href="./assets/css/tic-tac-toe.css" />
+		<link rel="stylesheet" href="./assets/css/animate.min.css" />
+		<link rel="icon" href="./assets/others/logo.jpg" />
+	</head>
+	<!--
+*********************************************************
+*Written on pure Javascript, Css and Html. ©Rifat Mahmud*
+*********************************************************
+-->
+
+	<body>
+		<h1>Tic-Tac-Toe</h1>
+		<section class="main-container">
+			<div class="btn-container">
+				<div class="btn b0"><span></span></div>
+				<div class="btn b1"><span></span></div>
+				<div class="btn b2"><span></span></div>
+				<div class="btn b3"><span></span></div>
+				<div class="btn b4"><span></span></div>
+				<div class="btn b5"><span></span></div>
+				<div class="btn b6"><span></span></div>
+				<div class="btn b7"><span></span></div>
+				<div class="btn b8"><span></span></div>
+			</div>
+		</section>
+		<section class="win">
+			<div class="main">
+				<div class="sty"></div>
+				<p>PLAYER wins</p>
+			</div>
+		</section>
+		<section class="point">
+			<span class="p1"> <!--Player1: <span>0</span>points--></span>
+			<span class="p2"> <!--Player2: <span>0</span>points--></span>
+		</section>
+		<section class="res">
+			<button class="btn1">Play Again</button>
+			<button class="btn2">Restart</button>
+		</section>
+		<section class="mode">
+			<button class="twoP">Multiplayer</button>
+			<button class="AI">Against AI</button>
+		</section>
+		<section class="audio">
+			<audio src="./assets/sound/chimes.wav" preload="auto"></audio>
+			<audio src="./assets/sound/chord.wav" preload="auto"></audio>
+			<audio src="./assets/sound/ding.wav" preload="auto"></audio>
+			<audio src="./assets/sound/notify.wav" preload="auto"></audio>
+		</section>
+	</body>
+	<script src="./assets/js/tic-tac-toe.js"></script>
+	<script src="./assets/js/vanilla-tilt.min.js"></script>
+	<script>
+		VanillaTilt.init(document.querySelectorAll('.btn'), {
+			'max': 45,
+			'speed': 400,
+			'glare': true,
+			'max-glare': 0.8
+		})
+	</script>
+</html>

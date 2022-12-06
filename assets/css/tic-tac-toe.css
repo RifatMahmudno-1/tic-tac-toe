@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Signika', sans-serif;
+    overflow: hidden;
+    overscroll-behavior: none;
+    user-select: none;
+}
+
+h1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding-top: 5%;
+    bottom: 5%;
+    color: rgb(141, 137, 137);
+}
+
+.main-container {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(3, 4, 77), rgb(43, 1, 24));
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+    z-index: 2;
+}
+
+.btn-container .btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid aqua;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+}
+
+.btn-container .btn span {
+    height: 80%;
+    width: 80%;
+    position: absolute;
+}
+
+.sp1 {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background: aqua;
+}
+
+.sp2 {
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    background: chartreuse;
+}
+
+.sp3 {
+    clip-path: polygon(50% 0, 28% 25%, 0 25%, 25% 50%, 0 75%, 30% 75%, 50% 100%, 70% 75%, 100% 75%, 75% 50%, 100% 25%, 70% 25%);
+    background: rgb(255, 0, 0);
+    transform: rotate(90deg);
+}
+
+.win {
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    justify-content: center;
+    display: grid;
+    visibility: hidden;
+    z-index: 4;
+}
+
+.win p {
+    text-align: center;
+    padding: 5px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 4px 5px 5px rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+
+.res,
+.mode {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-content: center;
+    z-index: 3;
+}
+
+.res button:hover,
+.btn-container .btn span:hover,
+.mode button {
+    cursor: pointer;
+}
+
+.res button,
+.mode button {
+    font-size: 100%;
+    background: linear-gradient(rgb(247, 0, 255), rgb(4, 0, 255));
+    padding: 5px 20px;
+    border: none;
+    box-shadow: 3px 2px 5px rgba(255, 255, 255, 0.7);
+    font-size: 200%;
+    margin-top: 10%;
+}
+
+.point {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    color: #fff;
+    padding: 5%;
+    display: none;
+}
+
+.point .p1 {
+    float: left;
+}
+
+.point .p2 {
+    float: right;
+}
